@@ -30,7 +30,7 @@ public class MessageRepository : IMessageRepository
 
             var sql = "INSERT INTO messages (content, timestamp, sequence_number) VALUES (@content, @timestamp, @sequence_number) RETURNING id;";
             
-            _logger.LogInformation("DAL: Executing SQL for adding message: {sql}", sql);
+            _logger.LogInformation("DAL: Executing SQL for ADD message: {sql}", sql);
 
             await using var command = new NpgsqlCommand(sql, connection);
             command.Parameters.AddWithValue("content", message.Content);
@@ -39,8 +39,8 @@ public class MessageRepository : IMessageRepository
 
             var id = (int)(await command.ExecuteScalarAsync() ?? 0);
             message.Id = id;
-            
             _logger.LogInformation("DAL: Message successfully added with ID: {id}", id);
+            
             return message;
         }
 
@@ -51,7 +51,7 @@ public class MessageRepository : IMessageRepository
             await connection.OpenAsync();
 
             var sql = "SELECT id, content, timestamp, sequence_number FROM messages WHERE timestamp >= @from AND timestamp <= @to ORDER BY timestamp DESC;";
-            _logger.LogInformation("DAL: Executing SQL for receiving messages from time interval");
+            _logger.LogInformation("DAL: Executing SQL for GET messages from time interval");
 
             await using var command = new NpgsqlCommand(sql, connection);
             command.Parameters.AddWithValue("from", NpgsqlTypes.NpgsqlDbType.TimestampTz, from.ToUniversalTime());
@@ -68,8 +68,8 @@ public class MessageRepository : IMessageRepository
                     SequenceNumber = reader.GetInt64(3)
                 });
             }
-            
             _logger.LogInformation("DAL: Found {count} messages", messages.Count);
+            
             return messages;
         }
     }
