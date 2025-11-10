@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("msg-exchange.client3")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0365416cbabd6c1d10275c6b498fb57818fd19c2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f566b26b13fee9a07134e03e5b4c8b0e5daed84e")]
 [assembly: System.Reflection.AssemblyProductAttribute("msg-exchange.client3")]
 [assembly: System.Reflection.AssemblyTitleAttribute("msg-exchange.client3")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
